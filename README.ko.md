@@ -75,17 +75,19 @@ Node.js 18 이상 필요. macOS / Linux / Windows (Git Bash / PowerShell / cmd) 
 
 | 축 | 점수 | Raw |
 |---|---:|---|
-| Adoption Depth | 6/10 | 8 MCP + 10 skills + 1 agent |
-| Automation | 8/10 | tool calls 63.5% |
-| Context Efficiency | 6/10 | 평균 101줄/세션 |
+| Adoption Depth | 8/10 | 8 MCP + 10 skills + 8 agents = 26 |
+| Automation | 8/10 | tool calls 63.6% |
+| Context Efficiency | 8/10 | 평균 102줄/세션 + compaction 이벤트 잡힘 |
 | Tool Maker | 10/10 | 인프라 repo 10개 |
 | Safety Guards | 10/10 | 12개 훅, 9개 이벤트 종류 |
-| Multi-Agent | 10/10 | 멀티 에이전트 호출 482회 + 서브에이전트 세션 976/1022 (95.5%) |
-| Portability | 10/10 | CLAUDE.md + dotfiles + sync.py |
+| Multi-Agent | 10/10 | 멀티 에이전트 호출 455회 + 서브에이전트 978/1022 (95.5%) |
+| Portability | 10/10 | CLAUDE.md + dotfiles + sync.py (비표준 위치라 env var 필요) |
 | Learning Speed | 10/10 | 390 실행 + 10 skills + 8 MCPs |
-| **TOTAL** | **72/80** | 🛠 Tool Maker |
+| **TOTAL** | **74/80** | 🛠 Tool Maker |
 
-만든 사람이 80점이 아닌 72점인 건 의도된 것. 임계값을 본인 자랑용으로 조정한 게 아니라 문헌에 맞춰 잡았기 때문. 더 높은 점수 받으면 본인 점수를 PR로 등록해주세요.
+> 74/80은 env var 설정 시. 미설정 시 휴리스틱만으로 67/80 — 이 격차가 v1.0+의 `--mcp` / `--analyze` 모드가 존재하는 이유.
+
+만든 사람이 80점이 아닌 74점인 건 의도된 것. 임계값을 본인 자랑용으로 조정한 게 아니라 문헌에 맞춰 잡았기 때문. 더 높은 점수 받으면 본인 점수를 PR로 등록해주세요.
 
 ## 로드맵
 

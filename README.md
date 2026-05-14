@@ -20,12 +20,12 @@ npx harness-bench
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  Harness Benchmark                                v0.2.0
+  Harness Benchmark                                v1.1.0
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-  Adoption Depth   ████████░░░░░░  6/10
+  Adoption Depth   ███████████░░░  8/10
   Automation       ███████████░░░  8/10
-  Context Eff.     ████████░░░░░░  6/10
+  Context Eff.     ███████████░░░  8/10
   Tool Maker       ██████████████ 10/10
   Safety Guards    ██████████████ 10/10
   Multi-Agent      ██████████████ 10/10
@@ -33,7 +33,7 @@ npx harness-bench
   Learning Speed   ██████████████ 10/10
 
 ──────────────────────────────────────────────────────
-  TOTAL            72 / 80
+  TOTAL            74 / 80
   LABEL            🛠  Tool Maker
 
   You don't use AI. You build environments where AI thrives.
@@ -143,17 +143,20 @@ The author's own setup, as of release:
 
 | Axis | Score | Raw |
 |---|---:|---|
-| Adoption Depth | 6/10 | 8 MCP + 10 skills + 1 agent |
-| Automation | 8/10 | 11,657 tool uses / 18,349 msgs = 63.5% |
-| Context Efficiency | 6/10 | avg 101 lines/session |
+| Adoption Depth | 8/10 | 8 MCP + 10 skills + 8 agents = 26 |
+| Automation | 8/10 | 11,699 tool uses / 18,402 msgs = 63.6% |
+| Context Efficiency | 8/10 | avg 102 lines/session + compaction events present |
 | Tool Maker | 10/10 | 10 infra repos |
 | Safety Guards | 10/10 | 12 hooks across 9 event kinds |
-| Multi-Agent | 10/10 | 482 multi-agent calls + 976/1022 subagent files (95.5%) |
-| Portability | 10/10 | CLAUDE.md + dotfiles + sync.py |
+| Multi-Agent | 10/10 | 455 multi-agent calls + 978/1022 subagent files (95.5%) |
+| Portability | 10/10 | CLAUDE.md + dotfiles + sync.py (env var required for non-standard location) |
 | Learning Speed | 10/10 | 390 startups + 10 skills + 8 MCPs |
-| **TOTAL** | **72/80** | 🛠 Tool Maker |
+| **TOTAL** | **74/80** | 🛠 Tool Maker |
 
-The author scores 72, not 80, on purpose. The thresholds aren't calibrated to make the
+> Note: 74/80 requires env vars set (`HARNESS_BENCH_SYNC_SCRIPT`, `HARNESS_BENCH_DOTFILES_DIR`).
+> Without env vars the heuristic alone scores 67/80 — this gap is intentional and explains why v1.0+ added `--mcp` / `--analyze` modes.
+
+The author scores 74, not 80, on purpose. The thresholds aren't calibrated to make the
 maintainer look good — they're calibrated to the literature. If you score higher, ship a
 PR with your reference benchmark.
 
