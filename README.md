@@ -12,7 +12,7 @@ npx harness-bench
 ```
 
 <p align="center">
-  <img src="docs/sample-card.svg?v=eb6b848" alt="Sample score card — author's own setup" width="780">
+  <img src="docs/sample-card.svg?v=layout2" alt="Sample score card — author's own setup" width="780">
 </p>
 
 <details>

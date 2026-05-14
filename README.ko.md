@@ -8,7 +8,7 @@ npx harness-bench
 ```
 
 <p align="center">
-  <img src="docs/sample-card.svg?v=eb6b848" alt="샘플 점수 카드 — 저자 본인 셋업" width="780">
+  <img src="docs/sample-card.svg?v=layout2" alt="샘플 점수 카드 — 저자 본인 셋업" width="780">
 </p>
 
 ## 왜 만들었나

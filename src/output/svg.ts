@@ -38,10 +38,10 @@ export function renderSvgCard(result: BenchmarkResult): string {
 
   const barX = 80;
   const barLabelX = barX;
-  const barTrackX = barX + 200;
-  const barTrackW = 440;
+  const barScoreX = barX + 250;
+  const barTrackX = barX + 280;
+  const barTrackW = 480;
   const barTrackH = 18;
-  const barScoreX = barTrackX + barTrackW + 16;
 
   const totalBoxX = 850;
   const totalBoxY = 200;
@@ -55,9 +55,9 @@ export function renderSvgCard(result: BenchmarkResult): string {
       const color = barColor(axis.score);
       return `
         <text x="${barLabelX}" y="${y + 14}" fill="${DIM}" font-size="18" font-family="system-ui">${esc(axisLabels[axis.axis])}</text>
+        <text x="${barScoreX}" y="${y + 14}" fill="${FG}" font-size="18" font-family="system-ui" font-weight="600" text-anchor="end">${axis.score}/10</text>
         <rect x="${barTrackX}" y="${y}" width="${barTrackW}" height="${barTrackH}" rx="3" fill="${BAR_BG}"/>
         <rect x="${barTrackX}" y="${y}" width="${filledW}" height="${barTrackH}" rx="3" fill="${color}"/>
-        <text x="${barScoreX}" y="${y + 14}" fill="${FG}" font-size="18" font-family="system-ui" font-weight="600">${axis.score}/10</text>
       `;
     })
     .join('');
