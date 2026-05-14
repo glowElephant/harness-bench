@@ -1,5 +1,9 @@
 # harness-bench
 
+[![npm version](https://img.shields.io/npm/v/harness-bench.svg)](https://www.npmjs.com/package/harness-bench)
+[![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Node ≥18](https://img.shields.io/badge/node-%E2%89%A518-brightgreen.svg)](https://nodejs.org)
+
 > **How AI-Native is your dev environment?**
 > A CLI that benchmarks your Claude Code harness across 8 axes — in under 5 seconds, with zero data leaving your machine.
 
@@ -103,7 +107,7 @@ npx harness-bench --debug
 HARNESS_BENCH_GITHUB_USER=yourname npx harness-bench
 ```
 
-Requires Node.js ≥ 18.
+Requires Node.js ≥ 18. Works on macOS, Linux, and Windows (Git Bash / PowerShell / cmd).
 
 ## Reference benchmark
 

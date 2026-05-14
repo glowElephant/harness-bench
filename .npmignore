@@ -1,0 +1,8 @@
+src/
+tests/
+tsconfig.json
+.gitignore
+.github/
+harness-card.svg
+harness-card.png
+*.tsbuildinfo

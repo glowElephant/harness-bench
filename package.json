@@ -15,6 +15,14 @@
     "type": "git",
     "url": "https://github.com/glowElephant/harness-bench.git"
   },
+  "bugs": {
+    "url": "https://github.com/glowElephant/harness-bench/issues"
+  },
+  "os": [
+    "darwin",
+    "linux",
+    "win32"
+  ],
   "license": "MIT",
   "author": "glowElephant",
   "type": "module",
@@ -25,8 +33,13 @@
   "files": [
     "dist",
     "README.md",
+    "README.ko.md",
+    "CHANGELOG.md",
     "LICENSE"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsc",
     "dev": "tsx src/cli.ts",

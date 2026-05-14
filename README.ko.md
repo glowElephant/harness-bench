@@ -63,7 +63,7 @@ npx harness-bench --debug      # tool 이름 분포 + subagent 카운트
 HARNESS_BENCH_GITHUB_USER=yourname npx harness-bench
 ```
 
-Node.js 18 이상 필요.
+Node.js 18 이상 필요. macOS / Linux / Windows (Git Bash / PowerShell / cmd) 모두 동작.
 
 ## 레퍼런스 벤치마크
 
