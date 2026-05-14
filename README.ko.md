@@ -7,6 +7,10 @@
 npx harness-bench
 ```
 
+<p align="center">
+  <img src="docs/sample-card.svg" alt="샘플 점수 카드 — 저자 본인 셋업" width="780">
+</p>
+
 ## 왜 만들었나
 
 Claude Code 사용자는 다 자기만의 셋업이 있음 — 훅 몇 개, MCP 한두 개, CLAUDE.md 어딘가에. 근데 그 셋업이 **실제로** 발전된 건지, 그냥 바쁘기만 한 건지 어떻게 알지? 프로덕션급인지 cargo-cult인지?

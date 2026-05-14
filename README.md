@@ -11,9 +11,16 @@
 npx harness-bench
 ```
 
+<p align="center">
+  <img src="docs/sample-card.svg" alt="Sample score card — author's own setup" width="780">
+</p>
+
+<details>
+<summary>Terminal output preview</summary>
+
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  Harness Benchmark                                v0.1.0
+  Harness Benchmark                                v0.2.0
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   Adoption Depth   ████████░░░░░░  6/10
@@ -32,6 +39,8 @@ npx harness-bench
   You don't use AI. You build environments where AI thrives.
 ──────────────────────────────────────────────────────
 ```
+
+</details>
 
 ---
 

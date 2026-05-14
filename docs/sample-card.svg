@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <rect width="1200" height="630" fill="#0b0d10"/>
+
+  <text x="80" y="90" fill="#e6e9ef" font-size="48" font-weight="700" font-family="system-ui">Harness Benchmark</text>
+  <text x="80" y="130" fill="#7a8290" font-size="22" font-family="system-ui">How AI-Native is your dev environment?</text>
+
+  
+        <text x="80" y="214" fill="#7a8290" font-size="18" font-family="system-ui">Adoption Depth</text>
+        <rect x="300" y="200" width="560" height="18" rx="3" fill="#1a1f26"/>
+        <rect x="300" y="200" width="336" height="18" rx="3" fill="#60a5fa"/>
+        <text x="884" y="214" fill="#e6e9ef" font-size="18" font-family="system-ui" font-weight="600">6/10</text>
+      
+        <text x="80" y="252" fill="#7a8290" font-size="18" font-family="system-ui">Automation</text>
+        <rect x="300" y="238" width="560" height="18" rx="3" fill="#1a1f26"/>
+        <rect x="300" y="238" width="448" height="18" rx="3" fill="#5eead4"/>
+        <text x="884" y="252" fill="#e6e9ef" font-size="18" font-family="system-ui" font-weight="600">8/10</text>
+      
+        <text x="80" y="290" fill="#7a8290" font-size="18" font-family="system-ui">Context Eff.</text>
+        <rect x="300" y="276" width="560" height="18" rx="3" fill="#1a1f26"/>
+        <rect x="300" y="276" width="448" height="18" rx="3" fill="#5eead4"/>
+        <text x="884" y="290" fill="#e6e9ef" font-size="18" font-family="system-ui" font-weight="600">8/10</text>
+      
+        <text x="80" y="328" fill="#7a8290" font-size="18" font-family="system-ui">Tool Maker</text>
+        <rect x="300" y="314" width="560" height="18" rx="3" fill="#1a1f26"/>
+        <rect x="300" y="314" width="560" height="18" rx="3" fill="#5eead4"/>
+        <text x="884" y="328" fill="#e6e9ef" font-size="18" font-family="system-ui" font-weight="600">10/10</text>
+      
+        <text x="80" y="366" fill="#7a8290" font-size="18" font-family="system-ui">Safety Guards</text>
+        <rect x="300" y="352" width="560" height="18" rx="3" fill="#1a1f26"/>
+        <rect x="300" y="352" width="560" height="18" rx="3" fill="#5eead4"/>
+        <text x="884" y="366" fill="#e6e9ef" font-size="18" font-family="system-ui" font-weight="600">10/10</text>
+      
+        <text x="80" y="404" fill="#7a8290" font-size="18" font-family="system-ui">Multi-Agent</text>
+        <rect x="300" y="390" width="560" height="18" rx="3" fill="#1a1f26"/>
+        <rect x="300" y="390" width="560" height="18" rx="3" fill="#5eead4"/>
+        <text x="884" y="404" fill="#e6e9ef" font-size="18" font-family="system-ui" font-weight="600">10/10</text>
+      
+        <text x="80" y="442" fill="#7a8290" font-size="18" font-family="system-ui">Portability</text>
+        <rect x="300" y="428" width="560" height="18" rx="3" fill="#1a1f26"/>
+        <rect x="300" y="428" width="560" height="18" rx="3" fill="#5eead4"/>
+        <text x="884" y="442" fill="#e6e9ef" font-size="18" font-family="system-ui" font-weight="600">10/10</text>
+      
+        <text x="80" y="480" fill="#7a8290" font-size="18" font-family="system-ui">Learning Speed</text>
+        <rect x="300" y="466" width="560" height="18" rx="3" fill="#1a1f26"/>
+        <rect x="300" y="466" width="560" height="18" rx="3" fill="#5eead4"/>
+        <text x="884" y="480" fill="#e6e9ef" font-size="18" font-family="system-ui" font-weight="600">10/10</text>
+      
+
+  <rect x="870" y="200" width="250" height="260" rx="12" fill="#1a1f26" stroke="#60a5fa" stroke-width="2"/>
+  <text x="995" y="250" fill="#7a8290" font-size="18" font-family="system-ui" text-anchor="middle">TOTAL</text>
+  <text x="995" y="310" fill="#e6e9ef" font-size="64" font-weight="800" font-family="system-ui" text-anchor="middle">72</text>
+  <text x="995" y="340" fill="#7a8290" font-size="20" font-family="system-ui" text-anchor="middle">/ 80</text>
+
+  <text x="995" y="390" fill="#7a8290" font-size="14" font-family="system-ui" text-anchor="middle">LABEL</text>
+  <text x="995" y="425" fill="#5eead4" font-size="28" font-weight="700" font-family="system-ui" text-anchor="middle">🛠 Tool Maker</text>
+
+  <text x="80" y="560" fill="#7a8290" font-size="16" font-style="italic" font-family="system-ui">"You don't use AI. You build environments where AI thrives."</text>
+  <text x="80" y="600" fill="#7a8290" font-size="14" font-family="system-ui">harness-bench · github.com/glowElephant/harness-bench · npx harness-bench</text>
+</svg>
