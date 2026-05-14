@@ -6,3 +6,5 @@ tsconfig.json
 harness-card.svg
 harness-card.png
 *.tsbuildinfo
+SHOW_HN.md
+CLAUDE.md
