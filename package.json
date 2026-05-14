@@ -42,6 +42,7 @@
   },
   "scripts": {
     "build": "tsc",
+    "render:png": "tsx scripts/render-png.ts",
     "dev": "tsx src/cli.ts",
     "start": "node dist/cli.js",
     "test": "tsx --test tests/*.test.ts",
@@ -54,6 +55,7 @@
     "picocolors": "^1.0.0"
   },
   "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
     "@types/node": "^20.11.0",
     "tsx": "^4.7.0",
     "typescript": "^5.3.0"
