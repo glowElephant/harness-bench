@@ -89,15 +89,27 @@ export function multiAgent(scan: ScanResult): AxisScore {
     scan.totalAssistantMessages > 0
       ? (scan.taskToolCalls / scan.totalAssistantMessages) * 100
       : 0;
+  const baseScore = tierScore(TIERS.multiAgentPer100, per100);
+
+  const subagentRatio =
+    scan.sessions > 0 ? scan.subagentFiles / scan.sessions : 0;
+  let subagentBonus = 0;
+  if (subagentRatio >= 0.5) subagentBonus = 4;
+  else if (subagentRatio >= 0.2) subagentBonus = 3;
+  else if (subagentRatio >= 0.05) subagentBonus = 2;
+  else if (subagentRatio > 0) subagentBonus = 1;
+
   return {
     axis: 'multiAgent',
-    score: tierScore(TIERS.multiAgentPer100, per100),
+    score: Math.min(10, baseScore + subagentBonus),
     rawMetrics: {
-      taskCalls: scan.taskToolCalls,
+      multiAgentToolCalls: scan.taskToolCalls,
       per100Messages: Number(per100.toFixed(2)),
+      subagentFiles: scan.subagentFiles,
+      subagentRatio: Number(subagentRatio.toFixed(3)),
     },
     rationale:
-      'Task/Agent tool calls per 100 assistant messages. Indicates parallel subagent usage.',
+      'Multi-agent tool calls (Task/Agent/SendMessage/Skill) per 100 msgs + ratio of subagent session files. Captures both direct delegation and active parallel sessions.',
   };
 }
 

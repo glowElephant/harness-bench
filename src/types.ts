@@ -30,6 +30,8 @@ export interface ScanResult {
   totalAssistantMessages: number;
   totalToolUses: number;
   compactionEvents: number;
+  subagentFiles: number;
+  toolNameHistogram: Record<string, number>;
   selfBuiltInfraRepos: number;
   scannedAt: string;
   claudeVersion: string | null;

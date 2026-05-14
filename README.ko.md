@@ -58,6 +58,8 @@ Claude Code 사용자는 다 자기만의 셋업이 있음 — 훅 몇 개, MCP 
 npx harness-bench              # 기본 출력
 npx harness-bench --json       # JSON 출력
 npx harness-bench --raw        # 축별 raw 메트릭 표시
+npx harness-bench --svg        # 1200x630 SVG 공유 카드 저장 (X용)
+npx harness-bench --debug      # tool 이름 분포 + subagent 카운트
 HARNESS_BENCH_GITHUB_USER=yourname npx harness-bench
 ```
 
@@ -74,18 +76,18 @@ Node.js 18 이상 필요.
 | Context Efficiency | 6/10 | 평균 101줄/세션 |
 | Tool Maker | 10/10 | 인프라 repo 10개 |
 | Safety Guards | 10/10 | 12개 훅, 9개 이벤트 종류 |
-| Multi-Agent | 2/10 | Task call 100 메시지당 0.52회 |
+| Multi-Agent | 10/10 | 멀티 에이전트 호출 482회 + 서브에이전트 세션 976/1022 (95.5%) |
 | Portability | 10/10 | CLAUDE.md + dotfiles + sync.py |
 | Learning Speed | 10/10 | 390 실행 + 10 skills + 8 MCPs |
-| **TOTAL** | **62/80** | 🛠 Tool Maker |
+| **TOTAL** | **72/80** | 🛠 Tool Maker |
 
-만든 사람이 80점이 아닌 62점인 건 의도된 것. 임계값을 본인 자랑용으로 조정한 게 아니라 문헌에 맞춰 잡았기 때문. 더 높은 점수 받으면 본인 점수를 PR로 등록해주세요.
+만든 사람이 80점이 아닌 72점인 건 의도된 것. 임계값을 본인 자랑용으로 조정한 게 아니라 문헌에 맞춰 잡았기 때문. 더 높은 점수 받으면 본인 점수를 PR로 등록해주세요.
 
 ## 로드맵
 
-- **v0.2** — 공유 카드 PNG (1200×630, X 친화), 익명 글로벌 percentile
-- **v0.3** — Cursor, Codex, Aider 어댑터
-- **v0.4** — 시계열 ("6개월 동안 내 AI Native 점수 변화")
+- **v0.2** — `--svg` 공유 카드, Multi-Agent 정확도 개선 (SendMessage + subagent 파일), `--debug` 모드 ✅
+- **v0.3** — PNG 출력 (resvg-js), 익명 글로벌 percentile, Cursor 어댑터
+- **v0.4** — Codex/Aider 어댑터, 시계열 ("6개월 동안 내 AI Native 점수 변화")
 - **v0.5** — 팀 모드 (조직 단위 평균)
 
 ## 라이선스

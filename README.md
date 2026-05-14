@@ -17,12 +17,12 @@ npx harness-bench
   Context Eff.     ████████░░░░░░  6/10
   Tool Maker       ██████████████ 10/10
   Safety Guards    ██████████████ 10/10
-  Multi-Agent      ███░░░░░░░░░░░  2/10
+  Multi-Agent      ██████████████ 10/10
   Portability      ██████████████ 10/10
   Learning Speed   ██████████████ 10/10
 
 ──────────────────────────────────────────────────────
-  TOTAL            62 / 80
+  TOTAL            72 / 80
   LABEL            🛠  Tool Maker
 
   You don't use AI. You build environments where AI thrives.
@@ -92,6 +92,13 @@ npx harness-bench --json
 # Show per-axis raw metrics
 npx harness-bench --raw
 
+# Save a 1200x630 share card (great for X / OG images)
+npx harness-bench --svg
+npx harness-bench --svg=./my-score.svg
+
+# Tool-name histogram + subagent count (for nerds)
+npx harness-bench --debug
+
 # Override autodetected GitHub user
 HARNESS_BENCH_GITHUB_USER=yourname npx harness-bench
 ```
@@ -109,20 +116,20 @@ The author's own setup, as of release:
 | Context Efficiency | 6/10 | avg 101 lines/session |
 | Tool Maker | 10/10 | 10 infra repos |
 | Safety Guards | 10/10 | 12 hooks across 9 event kinds |
-| Multi-Agent | 2/10 | 96 Task calls / 18,349 msgs = 0.52/100 |
+| Multi-Agent | 10/10 | 482 multi-agent calls + 976/1022 subagent files (95.5%) |
 | Portability | 10/10 | CLAUDE.md + dotfiles + sync.py |
 | Learning Speed | 10/10 | 390 startups + 10 skills + 8 MCPs |
-| **TOTAL** | **62/80** | 🛠 Tool Maker |
+| **TOTAL** | **72/80** | 🛠 Tool Maker |
 
-The author scores 62, not 80, on purpose. The thresholds aren't calibrated to make the
+The author scores 72, not 80, on purpose. The thresholds aren't calibrated to make the
 maintainer look good — they're calibrated to the literature. If you score higher, ship a
 PR with your reference benchmark.
 
 ## Roadmap
 
-- **v0.2** — share card PNG (1200×630, X-friendly), anonymous global percentile
-- **v0.3** — Cursor, Codex, and Aider adapters
-- **v0.4** — time series ("your AI-Native score over 6 months")
+- **v0.2** — `--svg` share card, better Multi-Agent detection (SendMessage + subagent files), `--debug` mode ✅
+- **v0.3** — PNG output (resvg-js), anonymous global percentile, Cursor adapter
+- **v0.4** — Codex and Aider adapters, time series ("your AI-Native score over 6 months")
 - **v0.5** — team mode (org-level aggregates)
 
 ## Contributing

@@ -1,6 +1,6 @@
 {
   "name": "harness-bench",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "How AI-Native is your dev environment? Benchmark your Claude Code harness across 8 axes.",
   "keywords": [
     "claude-code",

@@ -38,6 +38,8 @@ export async function runScan(): Promise<ScanResult> {
     totalAssistantMessages: sessions.assistantMessages,
     totalToolUses: sessions.toolUses,
     compactionEvents: sessions.compactionEvents,
+    subagentFiles: sessions.subagentFiles,
+    toolNameHistogram: sessions.toolNameHistogram,
     selfBuiltInfraRepos: github.infraRepos,
     scannedAt: new Date().toISOString(),
     claudeVersion: null,
