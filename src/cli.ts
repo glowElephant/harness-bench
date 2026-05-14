@@ -10,6 +10,7 @@ import { renderSvgCard } from './output/svg.js';
 import { envDump } from './scanner/envdump.js';
 import { analyzeWithAnthropic } from './analyze.js';
 import { startMcpServer } from './mcp.js';
+import { runInstall } from './install.js';
 
 interface Args {
   json: boolean;
@@ -19,6 +20,8 @@ interface Args {
   svgPath: string | null;
   analyze: boolean;
   mcp: boolean;
+  install: boolean;
+  yes: boolean;
 }
 
 function parseArgs(argv: string[]): Args {
@@ -30,6 +33,8 @@ function parseArgs(argv: string[]): Args {
     svgPath: null,
     analyze: false,
     mcp: false,
+    install: false,
+    yes: false,
   };
   const rest = argv.slice(2);
   for (let i = 0; i < rest.length; i++) {
@@ -40,6 +45,8 @@ function parseArgs(argv: string[]): Args {
     else if (a === '--help' || a === '-h') args.help = true;
     else if (a === '--analyze') args.analyze = true;
     else if (a === '--mcp') args.mcp = true;
+    else if (a === 'install' || a === '--install') args.install = true;
+    else if (a === '--yes' || a === '-y') args.yes = true;
     else if (a === '--svg') args.svgPath = rest[i + 1] ?? 'harness-card.svg';
     else if (a.startsWith('--svg=')) args.svgPath = a.slice('--svg='.length);
   }
@@ -53,6 +60,10 @@ ${pc.bold('harness-bench')} — How AI-Native is your dev environment?
 ${pc.bold('Usage:')}
   npx harness-bench [options]
 
+${pc.bold('Commands:')}
+  install           One-shot MCP registration (auto-detects Claude Code,
+                    prints copy-paste config for Cursor/Codex/etc.)
+
 ${pc.bold('Options:')}
   --json            Output raw JSON instead of styled terminal card
   --raw, -v         Show per-axis raw metrics under the card
@@ -61,6 +72,7 @@ ${pc.bold('Options:')}
   --analyze         Add LLM-based judgment on top of classic score
                     (requires ANTHROPIC_API_KEY env var)
   --mcp             Run as a stdio MCP server (for Claude Code / Cursor / Codex)
+  --yes, -y         Skip confirmation prompts (for the install command)
   --help            Show this help
 
 ${pc.bold('What it scans (locally only — nothing leaves your machine):')}
@@ -88,6 +100,11 @@ async function main() {
 
   if (args.mcp) {
     await startMcpServer();
+    return;
+  }
+
+  if (args.install) {
+    await runInstall({ yes: args.yes });
     return;
   }
 

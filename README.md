@@ -105,9 +105,12 @@ npx harness-bench
 ANTHROPIC_API_KEY=sk-... npx harness-bench --analyze
 
 # 3. MCP server (no API key — your agent's LLM does the analysis)
-claude mcp add harness-bench -s user -- npx -y harness-bench --mcp
-# Then in Claude Code: "Run harness-bench scan and analyze my environment"
+npx harness-bench install     # one-shot: detects Claude Code, registers, sets env vars
+# Then in Claude Code (new session): "Run harness-bench scan and analyze my environment"
 ```
+
+The `install` command auto-detects Claude Code, fills env vars, backs up your config,
+and prints copy-paste instructions for Cursor / Codex / Gemini CLI / Aider users.
 
 Why three? The classic heuristic is calibrated against author's environment (n=1)
 and miss assets in non-standard locations. The LLM-augmented modes inspect your

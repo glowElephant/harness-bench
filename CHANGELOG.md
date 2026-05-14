@@ -1,5 +1,29 @@
 # Changelog
 
+## v1.1.0 — 2026-05-14
+
+### Added
+- **`harness-bench install` command** — one-shot MCP registration with auto-detection.
+  Replaces the two-line `claude mcp add ...` for Claude Code users:
+  ```bash
+  npx harness-bench install
+  ```
+  - Auto-detects Claude Code (~/.claude.json) and registers harness-bench
+  - Auto-detects GitHub user (via `gh CLI` → git remote → gitconfig)
+  - Auto-detects sync script and dotfiles dir from common locations
+  - Prints copy-paste config for Cursor / Codex / Gemini CLI / Aider
+  - Backs up `~/.claude.json` before mutation
+  - Asks for confirmation unless `--yes` is passed
+
+### Fixed
+- **Critical:** install previously overwrote user-set env vars on re-run. Now
+  merges — preserves existing env keys and only fills detected values for keys
+  the user hasn't set. Prints which keys were preserved.
+
+### Why
+v1.0 required users to memorize `claude mcp add harness-bench -s user -- npx -y harness-bench --mcp`
+plus three env vars. v1.1 collapses that to one line.
+
 ## v1.0.0 — 2026-05-14
 
 ### Major
