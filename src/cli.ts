@@ -7,6 +7,9 @@ import { scanMcp } from './scanner/mcp.js';
 import { scoreScan } from './scoring/index.js';
 import { renderRawDetails, renderTerminal } from './output/terminal.js';
 import { renderSvgCard } from './output/svg.js';
+import { envDump } from './scanner/envdump.js';
+import { analyzeWithAnthropic } from './analyze.js';
+import { startMcpServer } from './mcp.js';
 
 interface Args {
   json: boolean;
@@ -14,6 +17,8 @@ interface Args {
   debug: boolean;
   help: boolean;
   svgPath: string | null;
+  analyze: boolean;
+  mcp: boolean;
 }
 
 function parseArgs(argv: string[]): Args {
@@ -23,6 +28,8 @@ function parseArgs(argv: string[]): Args {
     debug: false,
     help: false,
     svgPath: null,
+    analyze: false,
+    mcp: false,
   };
   const rest = argv.slice(2);
   for (let i = 0; i < rest.length; i++) {
@@ -31,6 +38,8 @@ function parseArgs(argv: string[]): Args {
     else if (a === '--raw' || a === '-v') args.raw = true;
     else if (a === '--debug') args.debug = true;
     else if (a === '--help' || a === '-h') args.help = true;
+    else if (a === '--analyze') args.analyze = true;
+    else if (a === '--mcp') args.mcp = true;
     else if (a === '--svg') args.svgPath = rest[i + 1] ?? 'harness-card.svg';
     else if (a.startsWith('--svg=')) args.svgPath = a.slice('--svg='.length);
   }
@@ -49,6 +58,9 @@ ${pc.bold('Options:')}
   --raw, -v         Show per-axis raw metrics under the card
   --svg [PATH]      Save a 1200x630 SVG share card (default: ./harness-card.svg)
   --debug           Show tool name histogram and subagent counts
+  --analyze         Add LLM-based judgment on top of classic score
+                    (requires ANTHROPIC_API_KEY env var)
+  --mcp             Run as a stdio MCP server (for Claude Code / Cursor / Codex)
   --help            Show this help
 
 ${pc.bold('What it scans (locally only — nothing leaves your machine):')}
@@ -74,6 +86,11 @@ async function main() {
     return;
   }
 
+  if (args.mcp) {
+    await startMcpServer();
+    return;
+  }
+
   if (!args.json) {
     console.error(pc.gray('  Scanning ~/.claude/ ...'));
   }
@@ -82,12 +99,54 @@ async function main() {
   const mcp = await scanMcp();
   const result = scoreScan(scan, mcp.numStartups);
 
+  let analysis = null;
+  if (args.analyze) {
+    if (!process.env.ANTHROPIC_API_KEY) {
+      console.error(
+        pc.yellow(
+          '  --analyze requires ANTHROPIC_API_KEY env var. Skipping LLM analysis.'
+        )
+      );
+    } else {
+      if (!args.json) console.error(pc.gray('  Analyzing with Claude...'));
+      const env = await envDump();
+      try {
+        analysis = await analyzeWithAnthropic(result, env);
+      } catch (err) {
+        const msg = err instanceof Error ? err.message : String(err);
+        console.error(pc.yellow(`  LLM analysis failed: ${msg}`));
+      }
+    }
+  }
+
   if (args.json) {
-    console.log(JSON.stringify(result, null, 2));
+    console.log(JSON.stringify({ classic: result, analysis }, null, 2));
     return;
   }
 
   console.log(renderTerminal(result));
+
+  if (analysis) {
+    console.log('');
+    console.log(pc.bold('  LLM Analysis (Claude)'));
+    console.log(pc.dim('  ' + '─'.repeat(54)));
+    console.log(`  Classic total : ${pc.bold(`${analysis.classicTotal} / ${analysis.maxTotal}`)}`);
+    console.log(`  Adjusted total: ${pc.bold(pc.cyan(`${analysis.adjustedTotal} / ${analysis.maxTotal}`))}`);
+    console.log('');
+    for (const a of analysis.axes) {
+      if (a.delta === 0) continue;
+      const sign = a.delta > 0 ? '+' : '';
+      console.log(
+        `    ${pc.gray(a.axis.padEnd(20))} ${a.classicScore} → ${pc.bold(String(a.adjustedScore))} (${sign}${a.delta})  ${pc.dim(a.reason ?? '')}`
+      );
+    }
+    if (analysis.findings.length > 0) {
+      console.log('');
+      console.log(pc.bold('  Findings:'));
+      for (const f of analysis.findings) console.log(`    ${pc.gray('·')} ${f}`);
+    }
+    console.log('');
+  }
   if (args.raw) {
     console.log(renderRawDetails(result));
   }

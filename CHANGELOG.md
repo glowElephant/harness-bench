@@ -1,5 +1,50 @@
 # Changelog
 
+## v1.0.0 — 2026-05-14
+
+### Major
+- **MCP server mode (`--mcp`)** — run as stdio MCP for Claude Code / Cursor / Codex.
+  Exposes `harness_scan_classic`, `harness_scan_full`, `harness_recommend` tools.
+  The calling agent's LLM does judgment-based analysis; no API key needed.
+- **CLI `--analyze` mode** — adds LLM-based judgment on top of the classic score.
+  BYO ANTHROPIC_API_KEY. Catches assets the heuristic misses, miscategorizations,
+  and user-specific patterns. Returns classic + adjusted scores.
+- **`envDump()` function** — exposes full environment metadata (file names only,
+  never contents) so an LLM can audit the heuristic's blind spots.
+
+### Why this is v1.0
+v0.x relied on rigid heuristics calibrated against the author's n=1 environment.
+Anyone with a non-standard `~/.claude/` layout, custom dotfiles location, or
+domain-specific naming saw inaccurate scores. v1.0 fixes the n=1 problem two ways:
+- **Heuristic side:** env var overrides (`HARNESS_BENCH_SYNC_SCRIPT`,
+  `HARNESS_BENCH_DOTFILES_DIR`, `HARNESS_BENCH_GITHUB_USER`), broader
+  detection paths (chezmoi, yadm, .config, .dotfiles), and `gh CLI` /
+  git remote URL fallbacks for username detection.
+- **LLM side:** an agent that already has local access (Claude Code, Cursor,
+  Codex) can call the MCP server and inspect the full environment dump, returning
+  per-axis adjustments that the heuristic alone can't produce.
+
+### Author's reference benchmark update
+- Without env vars (pure v1 heuristics): **67/80** — Portability tanked because
+  the author's sync.py lives in a non-standard `graph-RAG-study/` location.
+- With env vars: **74/80** (same as v0.2 measurement).
+
+The 67 ↔ 74 gap is intentional and illustrative: the heuristic can't and shouldn't
+know about every user's idiosyncratic setup. That's what `--analyze` and `--mcp`
+exist to fix.
+
+### Changed
+- `sync.ts` removed hardcoded `C:/Git/graph-RAG-study/` paths (rule violation in v0.x).
+- `github.ts` no longer derives username from gitconfig email split. Now tries
+  `gh api user` → git remote URL → gitconfig `user.user` field in that order.
+- `INFRA_KEYWORDS` expanded: now includes `copilot`, `cursor`, `codex`, `aider`,
+  `windsurf`, `gpt`, `gemini`, `llm`, `vector`, `embedding`, `retrieval` alongside
+  Claude-ecosystem terms.
+
+### Privacy invariant (unchanged)
+File names, counts, hook events, and config values may be sent to the LLM in
+`--analyze` mode. Message content, source code, and prompt bodies are never read.
+
 ## v0.2.0 — 2026-05-14
 
 ### Added

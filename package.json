@@ -1,6 +1,6 @@
 {
   "name": "harness-bench",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "How AI-Native is your dev environment? Benchmark your Claude Code harness across 8 axes.",
   "keywords": [
     "claude-code",
@@ -52,6 +52,7 @@
     "node": ">=18"
   },
   "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
     "picocolors": "^1.0.0"
   },
   "devDependencies": {

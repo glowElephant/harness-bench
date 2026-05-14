@@ -95,25 +95,41 @@ The only network call is to the public GitHub REST API to count your public repo
 
 ## Usage
 
+### Three modes
+
 ```bash
-# Default styled output
+# 1. Classic (heuristic only — fast, deterministic, no network)
 npx harness-bench
 
-# Raw JSON (for piping into jq, dashboards, etc.)
-npx harness-bench --json
+# 2. LLM-augmented (BYO API key — judgment on top of heuristic)
+ANTHROPIC_API_KEY=sk-... npx harness-bench --analyze
 
-# Show per-axis raw metrics
-npx harness-bench --raw
+# 3. MCP server (no API key — your agent's LLM does the analysis)
+claude mcp add harness-bench -s user -- npx -y harness-bench --mcp
+# Then in Claude Code: "Run harness-bench scan and analyze my environment"
+```
 
-# Save a 1200x630 share card (great for X / OG images)
-npx harness-bench --svg
-npx harness-bench --svg=./my-score.svg
+Why three? The classic heuristic is calibrated against author's environment (n=1)
+and miss assets in non-standard locations. The LLM-augmented modes inspect your
+actual file layout and adjust the score per-axis.
 
-# Tool-name histogram + subagent count (for nerds)
-npx harness-bench --debug
+### Other options
 
-# Override autodetected GitHub user
-HARNESS_BENCH_GITHUB_USER=yourname npx harness-bench
+```bash
+npx harness-bench --json              # Raw JSON
+npx harness-bench --raw               # Per-axis raw metrics
+npx harness-bench --svg               # 1200x630 SVG share card
+npx harness-bench --svg=./my.svg
+npx harness-bench --debug             # Tool histogram + subagent counts
+```
+
+### Env vars (override autodetection)
+
+```bash
+HARNESS_BENCH_GITHUB_USER=yourname        # Override github user
+HARNESS_BENCH_SYNC_SCRIPT=/path/to/sync   # Non-standard sync script location
+HARNESS_BENCH_DOTFILES_DIR=/path/to/dot   # Non-standard dotfiles dir
+HARNESS_BENCH_MODEL=claude-sonnet-4-6     # Model for --analyze (default: haiku)
 ```
 
 Requires Node.js ≥ 18. Works on macOS, Linux, and Windows (Git Bash / PowerShell / cmd).
