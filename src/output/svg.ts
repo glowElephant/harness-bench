@@ -38,14 +38,14 @@ export function renderSvgCard(result: BenchmarkResult): string {
 
   const barX = 80;
   const barLabelX = barX;
-  const barTrackX = barX + 220;
-  const barTrackW = 560;
+  const barTrackX = barX + 200;
+  const barTrackW = 440;
   const barTrackH = 18;
-  const barScoreX = barTrackX + barTrackW + 24;
+  const barScoreX = barTrackX + barTrackW + 16;
 
-  const totalBoxX = 870;
+  const totalBoxX = 850;
   const totalBoxY = 200;
-  const totalBoxW = 250;
+  const totalBoxW = 270;
   const totalBoxH = 260;
 
   const bars = rows
