@@ -6,9 +6,9 @@
 
   
         <text x="80" y="214" fill="#7a8290" font-size="18" font-family="system-ui">Adoption Depth</text>
-        <text x="330" y="214" fill="#e6e9ef" font-size="18" font-family="system-ui" font-weight="600" text-anchor="end">6/10</text>
+        <text x="330" y="214" fill="#e6e9ef" font-size="18" font-family="system-ui" font-weight="600" text-anchor="end">8/10</text>
         <rect x="360" y="200" width="480" height="18" rx="3" fill="#1a1f26"/>
-        <rect x="360" y="200" width="288" height="18" rx="3" fill="#60a5fa"/>
+        <rect x="360" y="200" width="384" height="18" rx="3" fill="#5eead4"/>
       
         <text x="80" y="252" fill="#7a8290" font-size="18" font-family="system-ui">Automation</text>
         <text x="330" y="252" fill="#e6e9ef" font-size="18" font-family="system-ui" font-weight="600" text-anchor="end">8/10</text>
@@ -48,7 +48,7 @@
 
   <rect x="850" y="200" width="270" height="260" rx="12" fill="#1a1f26" stroke="#60a5fa" stroke-width="2"/>
   <text x="985" y="250" fill="#7a8290" font-size="18" font-family="system-ui" text-anchor="middle">TOTAL</text>
-  <text x="985" y="310" fill="#e6e9ef" font-size="64" font-weight="800" font-family="system-ui" text-anchor="middle">72</text>
+  <text x="985" y="310" fill="#e6e9ef" font-size="64" font-weight="800" font-family="system-ui" text-anchor="middle">74</text>
   <text x="985" y="340" fill="#7a8290" font-size="20" font-family="system-ui" text-anchor="middle">/ 80</text>
 
   <text x="985" y="390" fill="#7a8290" font-size="14" font-family="system-ui" text-anchor="middle">LABEL</text>
