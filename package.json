@@ -1,6 +1,6 @@
 {
   "name": "harness-bench",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "How AI-Native is your dev environment? Benchmark your Claude Code harness across 8 axes.",
   "keywords": [
     "claude-code",
@@ -13,7 +13,7 @@
   "homepage": "https://github.com/glowElephant/harness-bench",
   "repository": {
     "type": "git",
-    "url": "https://github.com/glowElephant/harness-bench.git"
+    "url": "git+https://github.com/glowElephant/harness-bench.git"
   },
   "bugs": {
     "url": "https://github.com/glowElephant/harness-bench/issues"
@@ -27,9 +27,9 @@
   "author": "glowElephant",
   "type": "module",
   "bin": {
-    "harness-bench": "./dist/cli.js"
+    "harness-bench": "dist/cli.js"
   },
-  "main": "./dist/index.js",
+  "main": "dist/index.js",
   "files": [
     "dist",
     "README.md",

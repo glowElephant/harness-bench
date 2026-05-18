@@ -1,6 +1,7 @@
 import pc from 'picocolors';
 import type { BenchmarkResult } from '../types.js';
 import { axisLabels, CHARACTERS } from '../scoring/label.js';
+import { VERSION } from '../version.js';
 
 const BAR_WIDTH = 14;
 const AXIS_LABEL_WIDTH = 16;
@@ -22,7 +23,7 @@ export function renderTerminal(result: BenchmarkResult): string {
   const char = CHARACTERS[result.label];
 
   const headerLeft = pc.bold('  Harness Benchmark');
-  const headerRight = pc.gray(`v0.1.0`);
+  const headerRight = pc.gray(`v${VERSION}`);
   lines.push('');
   lines.push(pc.dim('━'.repeat(54)));
   lines.push(`${headerLeft}${' '.repeat(54 - 22 - headerRight.length)}${headerRight}`);

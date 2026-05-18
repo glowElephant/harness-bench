@@ -8,7 +8,7 @@ Stay in the thread for the first 60 minutes — comments matter more than upvote
 ## Variant A — Honest / Self-deprecating (recommended)
 
 **Title (≤ 80 chars):**
-Show HN: Harness Bench – How AI-Native is your Claude Code setup? (I score 72/80)
+Show HN: Harness Bench – How AI-Native is your Claude Code setup? (I score 74/80)
 
 **Body:**
 
@@ -33,9 +33,10 @@ A few things I tried to get right:
    line counts. It never opens message content, prompts, or your repo source. The
    only network call is the public GitHub API (and you can disable it).
 
-2. **The author doesn't score 80/80.** I score 72 — my Adoption Depth and Context
-   Efficiency are middling, and that's in the README as the reference benchmark. If
-   the thresholds were tuned to make me look good they'd be useless.
+2. **The author doesn't score 80/80.** I score 74 — three axes (Adoption Depth,
+   Automation, Context Efficiency) sit at 8/10, and that's in the README as the
+   reference benchmark. If the thresholds were tuned to make me look good they'd
+   be useless.
 
 3. **The most interesting finding so far:** my v0.1 told me my Multi-Agent score was
    2/10 because I was only counting `Task`/`Agent` tool names. In v0.2 I started
@@ -87,9 +88,10 @@ Each axis has an absolute 0–10 threshold table (CMM/Anthropic-anchored), and a
 character label that combines them (Tool Maker / Speed Demon / Solo Wizard / Vibe
 Coder / Tinkerer / Cargo Culter).
 
-My own score: **72/80, "Tool Maker"** — the weakest axis is Adoption Depth, which
-told me my problem isn't building more tools, it's actually configuring more of the
-ones that already exist. That kind of mirror is what the tool is for.
+My own score: **74/80, "Tool Maker"** — three axes (Adoption Depth, Automation,
+Context Efficiency) sit at 8/10, which told me my problem isn't building more tools,
+it's actually configuring more of the ones that already exist. That kind of mirror
+is what the tool is for.
 
 The thresholds are opinionated and I'd love HN to argue with them. The relevant file
 is `src/scoring/thresholds.ts` (~60 lines).
@@ -121,10 +123,11 @@ A: Geoffrey Huntley's term, increasingly common in AI-Native engineering writeup
 It captures the idea that you're not running the LLM, you're running an apparatus
 around it.
 
-**Q: The author scoring 72/80 — isn't that suspicious?**
+**Q: The author scoring 74/80 — isn't that suspicious?**
 A: If I'd tuned the thresholds to my setup, I'd score 80. The thresholds were set
-first (anchored to literature), then I measured myself. v0.1 score was 62 — v0.2's
-improvement came from fixing measurement bugs, not loosening thresholds.
+first (anchored to literature), then I measured myself. v0.1 score was 62, v0.2
+was 72, v1.1 is 74 — every step came from fixing measurement bugs, not loosening
+thresholds. See CHANGELOG.
 
 **Q: What if I run this and it just tells me I'm a Cargo Culter?**
 A: That's the point. Better signal than not knowing.

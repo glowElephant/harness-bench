@@ -54,7 +54,7 @@ src/
 `thresholds.ts`의 티어 테이블은 절대 기준 (CMM/Anthropic/산업 자료 인용). 글로벌 percentile은 v0.2 서버 도입 후 별도 필드(`result.percentile`).
 
 ### 4. 만든 사람이 만점 안 받는 게 정직성 시그널
-저자 본인 점수 62/80. 임계값을 본인 자랑용으로 조정하지 않았다는 증거가 README의 Reference Benchmark 섹션. **임계값 수정 시 이 점수가 어떻게 바뀌는지 README 동시 갱신 필수.**
+저자 본인 점수 74/80 (v1.1 기준, env vars 설정 시). 임계값을 본인 자랑용으로 조정하지 않았다는 증거가 README의 Reference Benchmark 섹션. 버전별 추이는 CHANGELOG (v0.1: 62 → v0.2: 72 → v1.1: 74) — 전부 측정 정확도 개선이지 임계값 완화 아님. **임계값 수정 시 이 점수가 어떻게 바뀌는지 README 동시 갱신 필수.**
 
 ### 5. GitHub API는 비로그인 60req/h 한계
 `scanGithub()`은 최대 5 페이지(500 repos) 페치. 더 많으면 잘림. v0.2에서 PAT 옵션 추가 고려.

@@ -1,5 +1,19 @@
 # Changelog
 
+## v1.1.1 — 2026-05-18
+
+### Fixed
+- **Terminal output displayed stale `v0.1.0` header** even though npm registry
+  was on v1.1.0. Caused by hardcoded version strings in `src/output/terminal.ts`
+  and `src/mcp.ts`. New `src/version.ts` reads from `package.json` as the single
+  source of truth — `npx harness-bench` now correctly shows the installed version
+  in the header, and the MCP server identity advertises the same.
+
+### Why
+Pre-launch verification of `npx harness-bench` on a fresh machine surfaced the
+mismatch. Left unfixed, first-time users would see "v0.1.0" and assume the
+package is unmaintained.
+
 ## v1.1.0 — 2026-05-14
 
 ### Added

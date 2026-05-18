@@ -24,9 +24,10 @@ import { runScan } from './scanner/index.js';
 import { scanMcp } from './scanner/mcp.js';
 import { envDump } from './scanner/envdump.js';
 import { scoreScan } from './scoring/index.js';
+import { VERSION } from './version.js';
 
 const SERVER_NAME = 'harness-bench';
-const SERVER_VERSION = '1.0.0';
+const SERVER_VERSION = VERSION;
 
 export async function startMcpServer(): Promise<void> {
   const server = new Server(
